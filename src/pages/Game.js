@@ -4,11 +4,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-import Table from '../components/sudokuField/Table.jsx';
-import NewGameBtn from '../components/newGame/NewGame.jsx';
-import Timer from '../components/timer/Timer.jsx';
-import BtnCont from '../components/levelFilter/LevelGameBtn.jsx';
-import ControlBtnCont from '../components/button/ControlBtn.jsx';
+import Table from '../components/sudokuField/Table.js';
+import NewGameBtn from '../components/newGame/NewGame.js';
+import Timer from '../components/timer/Timer.js';
+import BtnCont from '../components/levelFilter/LevelGameBtn.js';
+import ControlBtnCont from '../components/button/ControlBtn.js';
 import {
   generateSudoku,
   getDeepCopy,

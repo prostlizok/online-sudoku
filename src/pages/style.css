@@ -20,7 +20,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;  /* Increase the max-width to make it wider */
+    max-width: 500px;  
 }
 
 h1 {
@@ -86,4 +86,29 @@ p a {
 
 p a:hover {
     text-decoration: underline;
+}
+
+.home-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #3399ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #287acc;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
 }

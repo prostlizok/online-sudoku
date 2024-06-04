@@ -4,6 +4,7 @@
 
 .easyButton {
   border: none;
+  margin-right: 10px;
   border-radius: 4vmin;
   text-decoration: none;
   color: #333;
@@ -30,6 +31,8 @@
   }
 }
 .mediumButton {
+  margin-right: 10px;
+
   border: none;
   border-radius: 4vmin;
   text-decoration: none;
