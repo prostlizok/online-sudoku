@@ -1,0 +1,86 @@
+.buttonLevel {
+  margin: 0px;
+}
+
+.easyButton {
+  border: none;
+  border-radius: 4vmin;
+  text-decoration: none;
+  color: #333;
+  background: #f5f5f5;
+  box-shadow: 0 5px 0 #ccc;
+  padding: 8px 16px;
+  font-size: 2.5vmin;
+  font-weight: bold;
+
+  &:hover {
+    background: #ccc;
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #ccc;
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+    scale: 0.9;
+  }
+}
+.mediumButton {
+  border: none;
+  border-radius: 4vmin;
+  text-decoration: none;
+  color: #333;
+  background: #e0e0e0;
+  box-shadow: 0 5px 0 #b3b3b3;
+  padding: 8px 16px;
+  font-size: 2.5vmin;
+  font-weight: bold;
+
+  &:hover {
+    background: #b3b3b3;
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #b3b3b3;
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+    scale: 0.9;
+  }
+}
+
+.expertButton {
+  border: none;
+  border-radius: 4vmin;
+  text-decoration: none;
+  color: #333;
+  background: #d9d9d9;
+  box-shadow: 0 5px 0 #a6a6a6;
+  padding: 8px 16px;
+  font-size: 2.5vmin;
+  font-weight: bold;
+
+  &:hover {
+    background: #a6a6a6;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #a6a6a6;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+    scale: 0.9;
+  }
+}

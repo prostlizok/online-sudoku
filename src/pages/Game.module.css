@@ -1,0 +1,70 @@
+.game {
+  text-align: center;
+}
+
+main {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #fff;
+}
+
+h1 {
+  margin: 40px auto 0px auto;
+  color: #4663ac;
+}
+p {
+  color: #4663ac;
+}
+
+/* Game.module.css */
+.gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Ensure full height for vertical centering */
+  padding: 20px;
+}
+
+.sudokuContainer {
+  margin-right: 20px;
+}
+
+.controlsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the controls horizontally */
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.buttonContainer,
+.buttonLevel,
+.newGameButton,
+.timer,
+.backButton {
+  margin-bottom: 10px;
+}
+
+.backButton {
+  padding: 10px 20px;
+  background-color: #3399ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background-color: #287acc;
+}
