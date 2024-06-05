@@ -31,7 +31,7 @@ const Game = () => {
     const initialSudoku = generateSudoku();
     const sudokuWithRemovedCells = removeCells(initialSudoku, difficulty);
     const solved = getDeepCopy(initialSudoku);
-    const solvedSuccessfully = solver(solved); // Solve the initial puzzle to get the solved state
+    const solvedSuccessfully = solver(solved); 
 
     console.log("Generated Sudoku:", sudokuWithRemovedCells);
     console.log("Solved Sudoku:", solved);
@@ -54,13 +54,6 @@ const Game = () => {
   function newGame() {
     const newSudoku = generateSudoku();
     const sudokuWithRemovedCells = removeCells(newSudoku, difficulty);
-    const solved = getDeepCopy(newSudoku);
-    const solvedSuccessfully = solver(solved); // Solve the new puzzle to get the solved state
-
-    console.log("Generated New Sudoku:", sudokuWithRemovedCells);
-    console.log("Solved New Sudoku:", solved);
-    console.log("Was Solver Successful:", solvedSuccessfully);
-
     setSudokuArr(sudokuWithRemovedCells);
     setInitialSudoku(sudokuWithRemovedCells);
     setGameStarted(true);
@@ -109,12 +102,12 @@ const Game = () => {
   };
 
   return (
-    <div className={css.gameContainer}>
-      <div className={css.sudokuContainer}>
+    <div className={css.gameContainer} role="main" aria-labelledby="gameTitle">
+      <div className={css.sudokuContainer} role="grid" aria-label="Sudoku Grid">
         <Table sudokuArr={sudokuArr} onInputChange={onInputChange} />
       </div>
       <div className={css.controlsContainer}>
-        <h1>MY SUDOKU</h1>
+        <h1 id="gameTitle">MY SUDOKU</h1>
         <p>Choose your game level:</p>
         <BtnCont switchDifficulty={setDifficulty} />
         <NewGameBtn newGame={newGame} />
@@ -124,7 +117,7 @@ const Game = () => {
           solveSudoku={solveSudoku}
           resetSudoku={resetSudoku}
         />
-        <button onClick={handleBackToHome} className={css.backButton}>Back to Home</button>
+        <button onClick={handleBackToHome} className={css.backButton} aria-label="Back to Home">Back to Home</button>
         <ToastContainer />
       </div>
     </div>

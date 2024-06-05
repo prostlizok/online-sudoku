@@ -4,15 +4,65 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 const collection = require('./config');
 const cors = require('cors');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+require('dotenv').config({ path: '../.env' });
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/mydb', { useNewUrlParser: true, useUnifiedTopology: true })
+// Swagger setup
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Sudoku API',
+            version: '1.0.0',
+            description: 'API for the Sudoku application'
+        },
+        servers: [
+            {
+                url: `http://localhost:${process.env.PORT || 3000}`
+            }
+        ],
+    },
+    apis: ['./index.js'], 
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Database connected successfully'))
     .catch(err => console.log('Error connecting to database', err));
 
+/**
+ * @swagger
+ * /signup:
+ *   post:
+ *     summary: User signup
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 example: "exampleUser"
+ *               password:
+ *                 type: string
+ *                 example: "examplemail@gmail.com"
+ *     responses:
+ *       201:
+ *         description: User registered successfully
+ *       400:
+ *         description: Invalid email or mobile number or username already exists
+ */
 app.post('/signup', async (req, res) => {
     const { username, password } = req.body;
 
@@ -39,6 +89,31 @@ app.post('/signup', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: User login
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 example: "exampleUser"
+ *               password:
+ *                 type: string
+ *                 example: "examplemail@gmail.com"
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *       400:
+ *         description: Invalid username or password
+ */
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -55,7 +130,8 @@ app.post('/login', async (req, res) => {
     return res.status(200).send("Login successful");
 });
 
-const port = process.env.PORT || 5000;
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

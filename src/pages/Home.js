@@ -10,7 +10,6 @@ const Home = () => {
   };
 
   const handleLogout = () => {
-    // Add your logout logic here
     navigate('/login');
   };
 
