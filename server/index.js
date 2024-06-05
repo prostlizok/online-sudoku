@@ -23,15 +23,18 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${process.env.PORT || 3000}`
+                url: `http://localhost:${process.env.PORT || 5000}`
             }
         ],
     },
-    apis: ['./index.js'], 
+    apis: ['./server/index.js'],
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Check if environment variables are loaded
+console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -56,7 +59,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
  *                 example: "exampleUser"
  *               password:
  *                 type: string
- *                 example: "examplemail@gmail.com"
+ *                 example: "examplePassword123@gmail.com"
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -107,7 +110,7 @@ app.post('/signup', async (req, res) => {
  *                 example: "exampleUser"
  *               password:
  *                 type: string
- *                 example: "examplemail@gmail.com"
+ *                 example: "examplePassword123@gmail.com"
  *     responses:
  *       200:
  *         description: Login successful
@@ -130,8 +133,7 @@ app.post('/login', async (req, res) => {
     return res.status(200).send("Login successful");
 });
 
-
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
